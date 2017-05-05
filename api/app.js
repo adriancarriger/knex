@@ -3,20 +3,25 @@ const knexFunction = require('knex');
 // Local imports
 const knexConfig = require('./knex-config');
 const screen = require('./screen');
-const knex = knexFunction(knexConfig.sqlite);
+const knex = knexFunction(knexConfig.pg);
 
 // App
 screen.clear();
 
-const query = knex.select().from('artists').where('ArtistId', '<', 10);
-run(query, 'pretty');
+const query = knex.select().from('tests');
 
+run(query, 'pretty');
+// run(query2, 'pretty');
+/**
+ * @method run
+ * @param {string} mode
+ */
 function run(knexQuery, mode) {
-  return knexQuery
+  knexQuery
     .then(data => screen.write(data, mode))
     .catch(error => console.warn(error))
     .finally(() => {
-      knex.destroy();
+      // knex.destroy();
       console.log('Done.');
     });
 }

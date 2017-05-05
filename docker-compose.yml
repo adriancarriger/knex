@@ -1,0 +1,8 @@
+version: '2'
+services:
+
+  db:
+    image: mdillon/postgis:9.6
+    working_dir: /src
+    ports:
+      - '6432:5432'
