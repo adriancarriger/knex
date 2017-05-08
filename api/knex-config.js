@@ -12,7 +12,7 @@ module.exports = {
   sqlite: {
     client: 'sqlite3',
     connection: {
-      filename: './src/db/chinook.db'
+      filename: './db/chinook.db'
     },
     debug: true,
     useNullAsDefault: true
