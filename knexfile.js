@@ -10,6 +10,13 @@ module.exports = {
       user : 'postgres',
       password : '',
       database : 'postgres'
+    },
+    pool: {
+      min: 2,
+      max: 10
+    },
+    migrations: {
+      tableName: 'knex_migrations'
     }
   },
 
