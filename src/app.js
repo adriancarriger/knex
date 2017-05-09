@@ -1,9 +1,9 @@
 // 3rd part imports
 const knexFunction = require('knex');
 // Local imports
-const knexConfig = require('./knex-config');
+const knexConfig = require('../knexfile.js');
 const screen = require('./screen');
-const knex = knexFunction(knexConfig.sqlite);
+const knex = knexFunction(knexConfig.development);
 
 // App
 screen.clear();
@@ -12,6 +12,8 @@ const query = knex('artists')
   .join('albums', 'artists.ArtistId', '=', 'albums.ArtistId')
   .select('artists.name', 'artists.ArtistId', 'albums.AlbumId as albums:id', 'albums.title as albums:title')
   .where('artists.ArtistId', 1);
+
+knex.schema.
 
 run(query, 'pretty');
 
