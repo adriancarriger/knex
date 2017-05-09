@@ -156,10 +156,6 @@ chalk@^1.0.0:
     strip-ansi "^3.0.0"
     supports-color "^2.0.0"
 
-clone-function@>=1.0.1:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/clone-function/-/clone-function-1.0.6.tgz#428471937750bca9c48ecbfbc16f6e232f74a03d"
-
 co@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/co/-/co-4.6.0.tgz#6ea6bdf3d853ae54ccb8e47bfa0bf3f9031fb184"
@@ -288,6 +284,10 @@ extglob@^0.3.1:
 extsprintf@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.0.2.tgz#e1080e0658e300b06294990cc70e1502235fd550"
+
+faker@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/faker/-/faker-4.1.0.tgz#1e45bbbecc6774b3c195fad2835109c6d748cc3f"
 
 filename-regex@^2.0.0:
   version "2.0.1"
@@ -485,10 +485,6 @@ http-signature@~1.1.0:
     assert-plus "^0.2.0"
     jsprim "^1.2.2"
     sshpk "^1.7.0"
-
-inflection@~1.2.6:
-  version "1.2.7"
-  resolved "https://registry.yarnpkg.com/inflection/-/inflection-1.2.7.tgz#59db4505310a746677182ed46e155e003bfb3591"
 
 inflight@^1.0.4:
   version "1.0.6"
@@ -695,10 +691,6 @@ lodash@^4.6.0:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
-lodash@~1.3.1:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-1.3.1.tgz#a4663b53686b895ff074e2ba504dfb76a8e2b770"
-
 micromatch@^2.3.7:
   version "2.3.11"
   resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-2.3.11.tgz#86677c97d1720b363431d04d0d15293bd38c1565"
@@ -810,17 +802,6 @@ oauth-sign@~0.8.1:
 object-assign@4.1.0, object-assign@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.0.tgz#7a3b3d0e98063d43f4c03f2e8ae6cd51a86883a0"
-
-object-foreach@>=0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/object-foreach/-/object-foreach-0.1.2.tgz#d7421c5b40e3b6a3ef57ac624368d21d8f8d2dec"
-
-object-merge@~2.5.1:
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/object-merge/-/object-merge-2.5.1.tgz#077e8915ce38ea7294788448c5dd339e34df4227"
-  dependencies:
-    clone-function ">=1.0.1"
-    object-foreach ">=0.1.2"
 
 object.omit@^2.0.0:
   version "2.0.1"
@@ -1217,14 +1198,6 @@ tough-cookie@~2.3.0:
   resolved "https://registry.yarnpkg.com/tough-cookie/-/tough-cookie-2.3.2.tgz#f081f76e4c85720e6c37a5faced737150d84072a"
   dependencies:
     punycode "^1.4.1"
-
-treeize@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/treeize/-/treeize-2.0.2.tgz#e8f5a0a8275d7c7273770a4ef5d1b13e256f988b"
-  dependencies:
-    inflection "~1.2.6"
-    lodash "~1.3.1"
-    object-merge "~2.5.1"
 
 tunnel-agent@^0.6.0:
   version "0.6.0"
