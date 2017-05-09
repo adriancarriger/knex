@@ -2,7 +2,7 @@ const knexFunction = require('knex');
 const knexConfig = require('../knexfile.js');
 const knex = knexFunction(knexConfig.development);
 
-exports.up = function(TEMP, Promise) {
+exports.up = function(knex, Promise) {
   return knex.schema.createTable('messages', function(message) {
       message.text('body').notNull();
       message.string('sid').primary();
@@ -13,6 +13,6 @@ exports.up = function(TEMP, Promise) {
   });
 };
 
-exports.down = function(TEMP, Promise) {
+exports.down = function(knex, Promise) {
   return knex.schema.dropTableIfExists('messages');
 };
