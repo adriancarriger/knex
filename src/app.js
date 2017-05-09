@@ -8,12 +8,8 @@ const knex = knexFunction(knexConfig.development);
 // App
 screen.clear();
 
-const query = knex('artists')
-  .join('albums', 'artists.ArtistId', '=', 'albums.ArtistId')
-  .select('artists.name', 'artists.ArtistId', 'albums.AlbumId as albums:id', 'albums.title as albums:title')
-  .where('artists.ArtistId', 1);
-
-knex.schema.
+const query = knex('messages')
+  .select().limit(2);
 
 run(query, 'pretty');
 
