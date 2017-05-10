@@ -1,5 +1,5 @@
 const faker = require('faker');
-const addMessage = require('../src/incoming-message').addMessage;
+const addMessage = require('../src/add-message').addMessage;
 const addPerson = require('../src/add-person').addPerson;
 
 exports.seed = function(knex, Promise) {
