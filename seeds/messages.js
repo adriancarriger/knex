@@ -1,26 +1,92 @@
 const faker = require('faker');
+const addMessage = require('../src/incoming-message').addMessage;
+const addPerson = require('../src/add-person').addPerson;
 
 exports.seed = function(knex, Promise) {
-  // Deletes ALL existing entries
-  const table = 'messages';
-  return knex(table).del()
-    .then(function () {
-      // Inserts seed entries
-      return knex(table).insert( phoneData(10) );
-    });
+  const data = generateData(20, 100);
+  // Delete previous values
+  return knex('numbersToPeople').del()
+    .then(() => knex('people').del())
+    .then(() => knex('messages').del())
+    .then(() => knex('numbers').del())
+    // Add messages
+    .then(() => Promise.all(data.messages.map(message => addMessage(message))))
+    .then(() => Promise.all(data.people.map(person => addPerson(person.data, person.number))));
 };
 
-function phoneData(rows) {
-  let data = [];
-  for (let i = 0; i < rows; i++) {
-    data.push({
-      body: faker.lorem.text(),
-      sid: faker.random.uuid(),
-      dateCreated: faker.date.recent(),
-      direction: faker.random.boolean() ? 'inbound' : 'outbound',
-      from: ('+1' + faker.phone.phoneNumberFormat()).split('-').join(''),
-      to: ('+1' + faker.phone.phoneNumberFormat()).split('-').join('')
-    });
+/**
+ * Generates message data
+ * @param {number} numbers amount of numbers per person
+ * @param {number} messages minimum amount of messages per number
+ */
+function generateData(maxNumbers, averageMessages) {
+  const myNumber = generatePhone();
+  const messages = generateMessages(maxNumbers, averageMessages, myNumber);
+  const people = genereatePeople(messages.numbers, myNumber);
+  return {
+    messages: messages.data,
+    numbers: messages.numbers,
+    people: people
+  };
+}
+
+function generatePhone() {
+  return ('+1' + faker.phone.phoneNumberFormat()).split('-').join('');
+}
+
+function generateMessages(maxNumbers, averageMessages, myNumber) {
+  const data = [];
+  const numbers = [];
+  // Create phone numbers
+  for (let i = 0; i < maxNumbers; i++) {
+    const fromNumber = generatePhone();
+    numbers.push(fromNumber);
+    const maxMessages = randomIntFromInterval(1, averageMessages * 2);
+    // Create messages
+    for (let n = 0; n < maxMessages; n++) {
+      const inbound = Boolean(faker.random.boolean());
+      data.push({
+        body: faker.lorem.sentence(),
+        sid: faker.random.uuid(),
+        dateCreated: new Date(),
+        direction: inbound ? 'inbound' : 'outbound',
+        from: inbound ? fromNumber : myNumber,
+        to: inbound ? myNumber : fromNumber,
+      });
+    }
   }
-  return data;
+  return {
+    data,
+    numbers
+  };
+}
+
+function genereatePeople(numbers, myNumber) {
+   // Add people
+  const people = numbers.map(number => {
+    return {
+      data: {
+        firstName: faker.random.boolean() ? faker.name.firstName() : null,
+        lastName: faker.random.boolean() ? faker.name.lastName() : null,
+        job: faker.random.boolean() ? faker.name.jobTitle() : null,
+        dateCreated: new Date() // new Date(faker.date.recent()) didn't work.. ??
+      },
+      number: number
+    };
+  });
+  // Add self
+  people.push({
+    data: {
+      firstName: 'Adrian',
+      lastName: 'Carriger',
+      job: 'Software Developer',
+      dateCreated: new Date()
+    },
+    number: myNumber
+  });
+  return people;
+}
+
+function randomIntFromInterval(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
