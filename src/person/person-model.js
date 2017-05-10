@@ -22,18 +22,6 @@ class PersonModel extends Model {
           },
           to: 'number.number'
         }
-      },
-      messages: {
-        relation: Model.ManyToManyRelation,
-        modelClass: NumberModel,
-        join: {
-          from: 'person.id',
-          through: {
-            from: 'numberToPerson.personId',
-            to: 'numberToPerson.number'
-          },
-          to: 'number.number'
-        }
       }
     };
   }

@@ -8,7 +8,7 @@ exports.up = function(knex, Promise) {
     knex.schema.createTable('message', message => {
       message.text('body').notNull();
       message.string('sid').primary();
-      message.dateTime('dateCreated').notNull();
+      message.dateTime('datecreated').notNull();
       message.enum('direction', ['inbound', 'outbound']).notNull();
       message.string('from', 12).index().references('number').inTable('number').notNull();
       message.string('to', 12).index().references('number').inTable('number').notNull();
@@ -16,7 +16,7 @@ exports.up = function(knex, Promise) {
     // Numbers
     knex.schema.createTable('number', number => {
       number.string('number', 12).primary();
-      number.dateTime('dateCreated').notNull();
+      number.dateTime('datecreated').notNull();
     }),
     // People
     knex.schema.createTable('person', person => {
@@ -24,14 +24,14 @@ exports.up = function(knex, Promise) {
       person.string('firstName');
       person.string('lastName');
       person.string('job');
-      person.dateTime('dateCreated').notNull();
+      person.dateTime('datecreated').notNull();
     }),
     // Many to many => numbers to person
     knex.schema.createTable('numberToPerson', table => {
       table.increments('id').primary();
       table.string('number', 12).index().references('number').inTable('number').notNull();
       table.bigInteger('personId').index().references('id').inTable('person').notNull();
-      table.dateTime('dateCreated').notNull();
+      table.dateTime('datecreated').notNull();
     })
   ]);
 };

@@ -3,7 +3,7 @@ const addMessage = require('../src/message/add-message').addMessage;
 const addPerson = require('../src/person/add-person').addPerson;
 
 exports.seed = function(knex, Promise) {
-  const data = generateData(20, 100);
+  const data = generateData(3, 5);
   // Delete previous values
   return knex('numberToPerson').del()
     .then(() => knex('person').del())
@@ -48,7 +48,7 @@ function generateMessages(maxNumbers, averageMessages, myNumber) {
       data.push({
         body: faker.lorem.sentence(),
         sid: faker.random.uuid(),
-        dateCreated: new Date(),
+        datecreated: new Date(),
         direction: inbound ? 'inbound' : 'outbound',
         from: inbound ? fromNumber : myNumber,
         to: inbound ? myNumber : fromNumber,
@@ -69,7 +69,7 @@ function genereatePeople(numbers, myNumber) {
         firstName: faker.random.boolean() ? faker.name.firstName() : null,
         lastName: faker.random.boolean() ? faker.name.lastName() : null,
         job: faker.random.boolean() ? faker.name.jobTitle() : null,
-        dateCreated: new Date() // new Date(faker.date.recent()) didn't work.. ??
+        datecreated: new Date() // new Date(faker.date.recent()) didn't work.. ??
       },
       number: number
     };
@@ -80,7 +80,7 @@ function genereatePeople(numbers, myNumber) {
       firstName: 'Adrian',
       lastName: 'Carriger',
       job: 'Software Developer',
-      dateCreated: new Date()
+      datecreated: new Date()
     },
     number: myNumber
   });

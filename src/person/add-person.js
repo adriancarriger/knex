@@ -10,7 +10,7 @@ function addPerson(person, phone) {
       return knex('numberToPerson').insert({
         number: phone,
         personId: personId,
-        dateCreated: new Date()
+        datecreated: new Date()
       });
     });
 }

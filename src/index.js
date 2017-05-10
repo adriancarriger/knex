@@ -18,7 +18,16 @@ screen.clear();
 
 connectDb();
 
-run(MessageModel.query(), 'pretty');
+run(
+  PersonModel
+    .query()
+    .select('*')
+    .joinRelation('numbers.outgoingMessages', 'numbers.incomingMessages')
+    .orderBy('numbers:outgoingMessages.datecreated')
+    // .eager('numbers.messages')
+    ,
+
+  'pretty');
 // run(NumberModel.query(), 'pretty');
 
 
