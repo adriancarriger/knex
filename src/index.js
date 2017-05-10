@@ -5,13 +5,28 @@ const knexConfig = require('../knexfile.js');
 const screen = require('./util/screen');
 const knex = knexFunction(knexConfig.development);
 
+const { connectDb } = require('./db/db-service')
+const { PersonModel } = require('./person/person-model');
+const { NumberModel } = require('./number/number-model');
+const { MessageModel } = require('./message/message-model');
+
 // App
 screen.clear();
 
-const query = knex('messages')
-  .select().limit(2);
 
-run(query, 'pretty');
+
+
+connectDb();
+
+run(MessageModel.query(), 'pretty');
+// run(NumberModel.query(), 'pretty');
+
+
+
+
+
+
+
 
 /**
  * @method run

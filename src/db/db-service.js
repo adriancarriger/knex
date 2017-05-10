@@ -2,6 +2,7 @@
 
 // 3rd part imports
 const knexFunction = require('knex');
+const { Model } = require('objection');
 // Local imports
 const knexConfig = require('../../knexfile.js');
 
@@ -19,6 +20,7 @@ function connectDb() {
   console.log('connecting...');
 
 	knex = knexFunction(knexConfig.development);
+	Model.knex(knex);
 
 	return knex;
 }

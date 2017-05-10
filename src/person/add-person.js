@@ -5,9 +5,9 @@ const knex = require('../db/db-service').connectDb();
  */
 function addPerson(person, phone) {
   // Add
-  return knex('people').insert(person).returning('id')
+  return knex('person').insert(person).returning('id')
     .then(([personId]) => {
-      return knex('numbersToPeople').insert({
+      return knex('numberToPerson').insert({
         number: phone,
         personId: personId,
         dateCreated: new Date()

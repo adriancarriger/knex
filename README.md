@@ -1,4 +1,4 @@
-# A fun project for Twilio messages
+# A fun project for Twilio message
 
 ## Running the code
 

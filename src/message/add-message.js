@@ -7,14 +7,14 @@ function addMessage(message) {
   return Promise.all(
     [message.to, message.from].map(number => {
       return knex.raw(
-        'INSERT INTO numbers (number, "dateCreated") VALUES (?, now()) ON CONFLICT DO NOTHING',
+        'INSERT INTO number (number, "dateCreated") VALUES (?, now()) ON CONFLICT DO NOTHING',
         number
       );
     })
   )
   // Add message
   .then(() => {
-    return knex('messages').insert({
+    return knex('message').insert({
       body: message.body,
       sid: message.sid,
       dateCreated: message.dateCreated,

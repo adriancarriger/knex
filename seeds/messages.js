@@ -5,10 +5,10 @@ const addPerson = require('../src/person/add-person').addPerson;
 exports.seed = function(knex, Promise) {
   const data = generateData(20, 100);
   // Delete previous values
-  return knex('numbersToPeople').del()
-    .then(() => knex('people').del())
-    .then(() => knex('messages').del())
-    .then(() => knex('numbers').del())
+  return knex('numberToPerson').del()
+    .then(() => knex('person').del())
+    .then(() => knex('message').del())
+    .then(() => knex('number').del())
     // Add messages
     .then(() => Promise.all(data.messages.map(message => addMessage(message))))
     .then(() => Promise.all(data.people.map(person => addPerson(person.data, person.number))));
