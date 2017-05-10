@@ -2,7 +2,7 @@
 const knexFunction = require('knex');
 // Local imports
 const knexConfig = require('../knexfile.js');
-const screen = require('./screen');
+const screen = require('./util/screen');
 const knex = knexFunction(knexConfig.development);
 
 // App

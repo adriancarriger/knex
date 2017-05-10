@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./src/app.js",
-    "twilio": "node ./src/twilio.js"
+    "start": "node ./src/index.js",
+    "twilio": "node ./src/twilio/twilio.js"
   },
   "author": "",
   "license": "ISC",

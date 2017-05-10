@@ -1,4 +1,4 @@
-const knex = require('./db/db-service').connectDb();
+const knex = require('../db/db-service').connectDb();
 /**
  * @param {Object} person
  * @param {string} phone

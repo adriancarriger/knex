@@ -9,7 +9,7 @@ let knex;
 
 /**
  * @method connectDb
- * @return {Knex}
+ * @return (Knex)
  */
 function connectDb() {
 	if (knex) {
