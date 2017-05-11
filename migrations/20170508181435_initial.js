@@ -32,6 +32,10 @@ exports.up = function(knex, Promise) {
       table.string('number', 12).index().references('number').inTable('number').notNull();
       table.bigInteger('personId').index().references('id').inTable('person').notNull();
       table.dateTime('datecreated').notNull();
+    }),
+    knex.schema.createTable('self', table => {
+      table.string('type').primary();
+      table.string('value').notNull();
     })
   ]);
 };
@@ -39,6 +43,7 @@ exports.up = function(knex, Promise) {
 exports.down = function(knex, Promise) {
   return new Promise(resolve => {
     Promise.all([
+      knex.schema.dropTableIfExists('self'),
       knex.schema.dropTableIfExists('numberToPerson'),
       knex.schema.dropTableIfExists('message'),
       knex.schema.dropTableIfExists('person')

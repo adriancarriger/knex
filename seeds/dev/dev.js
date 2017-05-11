@@ -15,7 +15,7 @@ exports.seed = function(knex, Promise) {
     .then(() => Promise.all(data.messages.map(message => addMessage(message))))
     .then(() => Promise.all(data.people.map(person => addPersonToNumber(person.data, person.number))))
     // Add self
-    .then(addSelf);
+    .then(() => addSelf(knex));
 };
 
 /**

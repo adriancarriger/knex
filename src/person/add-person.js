@@ -11,7 +11,7 @@ function addPersonToNumber(person, phone) {
         number: phone,
         personId: personId,
         datecreated: new Date()
-      });
+      }).returning('id');
     });
 }
 
