@@ -8,6 +8,7 @@ exports.seed = function(knex, Promise) {
   const data = generateData(3, 5);
   // Delete previous values
   return knex('numberToPerson').del()
+    .then(() => knex('self').del())
     .then(() => knex('person').del())
     .then(() => knex('message').del())
     .then(() => knex('number').del())
