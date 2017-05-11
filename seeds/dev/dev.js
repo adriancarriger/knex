@@ -1,4 +1,5 @@
 const faker = require('faker');
+const hipsum = require('lorem-hipsum');
 const addMessage = require('../../src/message/add-message').addMessage;
 const addPerson = require('../../src/person/add-person').addPerson;
 
@@ -46,7 +47,7 @@ function generateMessages(maxNumbers, averageMessages, myNumber) {
     for (let n = 0; n < maxMessages; n++) {
       const inbound = Boolean(faker.random.boolean());
       data.push({
-        body: faker.lorem.sentence(),
+        body: inbound ? hipsum() : faker.hacker.phrase(),
         sid: faker.random.uuid(),
         dateSent: new Date(faker.date.recent()), // dateSent is camelCased to match Twilio's api
         direction: inbound ? 'inbound' : 'outbound',
