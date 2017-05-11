@@ -35,7 +35,7 @@ exports.up = function(knex, Promise) {
     }),
     knex.schema.createTable('self', table => {
       table.string('type').primary();
-      table.string('value').notNull();
+      table.bigInteger('value').notNull();
     })
   ]);
 };

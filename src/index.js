@@ -18,7 +18,7 @@ connectDb();
 const query = PersonModel
   .query()
   .select('firstName', 'direction', 'body', 'numbers:message.datecreated')
-  .where('person.id', '!=', '3')
+  .where('person.id', '!=', knex('self').select('value').where('type', '=', 'phone'))
   .joinRelation('[numbers.outgoingMessages, numbers.incomingMessages]', {
     aliases: { incomingMessages: 'message' }
   })
