@@ -10,3 +10,9 @@
 
 * `docker-compose exec db /bin/bash`
 * `psql -U postgres`
+
+## More
+
+* `knex seed:run`
+* `knex seed:run --env staging`
+* `knex seed:run --env production`

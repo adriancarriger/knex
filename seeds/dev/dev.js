@@ -1,6 +1,6 @@
 const faker = require('faker');
-const addMessage = require('../src/message/add-message').addMessage;
-const addPerson = require('../src/person/add-person').addPerson;
+const addMessage = require('../../src/message/add-message').addMessage;
+const addPerson = require('../../src/person/add-person').addPerson;
 
 exports.seed = function(knex, Promise) {
   const data = generateData(3, 5);
