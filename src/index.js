@@ -17,11 +17,11 @@ connectDb();
 // Query
 const query = PersonModel
   .query()
-  .select('firstName', 'direction', 'body')
+  .select('firstName', 'direction', 'body', 'numbers:message.datecreated')
   .joinRelation('[numbers.outgoingMessages, numbers.incomingMessages]', {
     aliases: { incomingMessages: 'message' }
   })
-  .orderBy('numbers:message.direction').debug();
+  .orderBy('numbers:message.datecreated').debug();
 
 // Run query
 run( query, 'pretty');

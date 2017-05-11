@@ -17,7 +17,7 @@ function addMessage(message) {
     return knex('message').insert({
       body: message.body,
       sid: message.sid,
-      datecreated: message.datecreated,
+      datecreated: message.dateSent, // dateSent is camelCased to match Twilio's api
       direction: message.direction,
       from: message.from,
       to: message.to

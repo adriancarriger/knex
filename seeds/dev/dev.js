@@ -48,7 +48,7 @@ function generateMessages(maxNumbers, averageMessages, myNumber) {
       data.push({
         body: faker.lorem.sentence(),
         sid: faker.random.uuid(),
-        datecreated: new Date(),
+        dateSent: new Date(faker.date.recent()), // dateSent is camelCased to match Twilio's api
         direction: inbound ? 'inbound' : 'outbound',
         from: inbound ? fromNumber : myNumber,
         to: inbound ? myNumber : fromNumber,
@@ -69,7 +69,7 @@ function genereatePeople(numbers, myNumber) {
         firstName: faker.random.boolean() ? faker.name.firstName() : null,
         lastName: faker.random.boolean() ? faker.name.lastName() : null,
         job: faker.random.boolean() ? faker.name.jobTitle() : null,
-        datecreated: new Date() // new Date(faker.date.recent()) didn't work.. ??
+        datecreated: new Date(faker.date.recent())
       },
       number: number
     };
@@ -80,7 +80,7 @@ function genereatePeople(numbers, myNumber) {
       firstName: 'Adrian',
       lastName: 'Carriger',
       job: 'Software Developer',
-      datecreated: new Date()
+      datecreated: new Date(faker.date.recent())
     },
     number: myNumber
   });
