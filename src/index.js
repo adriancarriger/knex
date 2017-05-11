@@ -10,32 +10,21 @@ const { PersonModel } = require('./person/person-model');
 const { NumberModel } = require('./number/number-model');
 const { MessageModel } = require('./message/message-model');
 
-// App
+// App setup
 screen.clear();
-
-
-
-
 connectDb();
 
-run(
-  PersonModel
-    .query()
-    .select('*')
-    .joinRelation('numbers.outgoingMessages', 'numbers.incomingMessages')
-    .orderBy('numbers:outgoingMessages.datecreated')
-    // .eager('numbers.messages')
-    ,
+// Query
+const query = PersonModel
+  .query()
+  .select('firstName', 'direction', 'body')
+  .joinRelation('[numbers.outgoingMessages, numbers.incomingMessages]', {
+    aliases: { incomingMessages: 'message' }
+  })
+  .orderBy('numbers:message.direction').debug();
 
-  'pretty');
-// run(NumberModel.query(), 'pretty');
-
-
-
-
-
-
-
+// Run query
+run( query, 'pretty');
 
 /**
  * @method run
