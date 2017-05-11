@@ -1,7 +1,8 @@
 const faker = require('faker');
 const hipsum = require('lorem-hipsum');
 const addMessage = require('../../src/message/add-message').addMessage;
-const addPerson = require('../../src/person/add-person').addPerson;
+const addPersonToNumber = require('../../src/person/add-person').addPersonToNumber;
+const  { addSelf, generatePhone, myNumber } = require('../shared/shared');
 
 exports.seed = function(knex, Promise) {
   const data = generateData(3, 5);
@@ -12,7 +13,9 @@ exports.seed = function(knex, Promise) {
     .then(() => knex('number').del())
     // Add messages
     .then(() => Promise.all(data.messages.map(message => addMessage(message))))
-    .then(() => Promise.all(data.people.map(person => addPerson(person.data, person.number))));
+    .then(() => Promise.all(data.people.map(person => addPersonToNumber(person.data, person.number))))
+    // Add self
+    .then(addSelf);
 };
 
 /**
@@ -21,7 +24,6 @@ exports.seed = function(knex, Promise) {
  * @param {number} messages minimum amount of messages per number
  */
 function generateData(maxNumbers, averageMessages) {
-  const myNumber = generatePhone();
   const messages = generateMessages(maxNumbers, averageMessages, myNumber);
   const people = genereatePeople(messages.numbers, myNumber);
   return {
@@ -29,10 +31,6 @@ function generateData(maxNumbers, averageMessages) {
     numbers: messages.numbers,
     people: people
   };
-}
-
-function generatePhone() {
-  return ('+1' + faker.phone.phoneNumberFormat()).split('-').join('');
 }
 
 function generateMessages(maxNumbers, averageMessages, myNumber) {
@@ -63,8 +61,8 @@ function generateMessages(maxNumbers, averageMessages, myNumber) {
 }
 
 function genereatePeople(numbers, myNumber) {
-   // Add people
-  const people = numbers.map(number => {
+  // Add people
+  return numbers.map(number => {
     return {
       data: {
         firstName: faker.random.boolean() ? faker.name.firstName() : null,
@@ -75,17 +73,6 @@ function genereatePeople(numbers, myNumber) {
       number: number
     };
   });
-  // Add self
-  people.push({
-    data: {
-      firstName: 'Adrian',
-      lastName: 'Carriger',
-      job: 'Software Developer',
-      datecreated: new Date(faker.date.recent())
-    },
-    number: myNumber
-  });
-  return people;
 }
 
 function randomIntFromInterval(min, max) {

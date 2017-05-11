@@ -1,6 +1,6 @@
 const addMessage = require('../../src/message/add-message').addMessage;
-const addPerson = require('../../src/person/add-person').addPerson;
-const myNumber = require('../../config/my-config').phone;
+const addPersonToNumber = require('../../src/person/add-person').addPersonToNumber;
+const addSelf = require('../shared/shared');
 const getMessages = require('../../src/twilio/get-messages').getMessages;
 
 exports.seed = function(knex, Promise) {
@@ -17,12 +17,5 @@ exports.seed = function(knex, Promise) {
       return Promise.all(messages.map(message => addMessage(message)));
     })
     // Add self
-    .then(() => {
-      addPerson({
-        firstName: 'Adrian',
-        lastName: 'Carriger',
-        job: 'Software Developer',
-        datecreated: new Date()
-      }, myNumber);
-    });
+    .then(addSelf);
 };

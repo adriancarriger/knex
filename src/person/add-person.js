@@ -3,7 +3,7 @@ const knex = require('../db/db-service').connectDb();
  * @param {Object} person
  * @param {string} phone
  */
-function addPerson(person, phone) {
+function addPersonToNumber(person, phone) {
   // Add
   return knex('person').insert(person).returning('id')
     .then(([personId]) => {
@@ -16,5 +16,5 @@ function addPerson(person, phone) {
 }
 
 module.exports = {
-  addPerson
+  addPersonToNumber
 };
