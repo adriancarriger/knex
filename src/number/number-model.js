@@ -8,11 +8,11 @@ const { MessageModel } = require('../message/message-model');
  * @extends DbModel
  */
 class NumberModel extends Model {
-	static get tableName() {
-		return 'number';
-	}
+  static get tableName() {
+    return 'number';
+  }
 
-	static get relationMappings() {
+  static get relationMappings() {
     return {
       outgoingMessages: {
         relation: Model.HasManyRelation,
@@ -22,7 +22,7 @@ class NumberModel extends Model {
           to: 'message.from'
         }
       },
-			incomingMessages: {
+      incomingMessages: {
         relation: Model.HasManyRelation,
         modelClass: MessageModel,
         join: {
@@ -35,5 +35,5 @@ class NumberModel extends Model {
 }
 
 module.exports = {
-	NumberModel
+  NumberModel
 };

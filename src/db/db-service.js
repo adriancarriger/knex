@@ -13,18 +13,18 @@ let knex;
  * @return (Knex)
  */
 function connectDb() {
-	if (knex) {
-		return knex;
-	}
+  if (knex) {
+    return knex;
+  }
 
   console.log('connecting...');
 
-	knex = knexFunction(knexConfig.development);
-	Model.knex(knex);
+  knex = knexFunction(knexConfig.development);
+  Model.knex(knex);
 
-	return knex;
+  return knex;
 }
 
 module.exports = {
-	connectDb,
+  connectDb,
 };
