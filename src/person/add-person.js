@@ -17,4 +17,4 @@ function addPerson(person, phone) {
 
 module.exports = {
   addPerson
-}
+};

@@ -16,4 +16,4 @@ function getMessages() {
 
 module.exports = {
   getMessages
-}
+};

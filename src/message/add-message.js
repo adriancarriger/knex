@@ -1,3 +1,5 @@
+'use strict';
+
 const knex = require('../db/db-service').connectDb();
 /**
  * @param {Object} message
@@ -27,4 +29,4 @@ function addMessage(message) {
 
 module.exports = {
   addMessage
-}
+};

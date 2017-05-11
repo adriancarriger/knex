@@ -1,4 +1,11 @@
-# A fun project for Twilio message
+# A fun project for Twilio messages
+
+## Connect to Postgres
+
+* `docker-compose exec db /bin/bash`
+* `psql -U postgres`
+* `CREATE DATABASE data;`
+* `\c data`
 
 ## Running the code
 
@@ -6,12 +13,7 @@
 1. Migrate: `knex migrate:latest`
 1. Seed: `knex seed:run`
 
-## Connect to Postgres
-
-* `docker-compose exec db /bin/bash`
-* `psql -U postgres`
-
-## More
+## Seed options
 
 * `knex seed:run`
 * `knex seed:run --env staging`

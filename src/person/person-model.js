@@ -1,7 +1,7 @@
 'use strict';
 
 const { Model } = require('objection');
-const { NumberModel } =  require('../number/number-model')
+const { NumberModel } = require('../number/number-model');
 
 class PersonModel extends Model {
 

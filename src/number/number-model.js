@@ -35,5 +35,5 @@ class NumberModel extends Model {
 }
 
 module.exports = {
-	NumberModel,
+	NumberModel
 };

@@ -18,10 +18,11 @@ connectDb();
 const query = PersonModel
   .query()
   .select('firstName', 'direction', 'body', 'numbers:message.datecreated')
+  .where('person.id', '!=', '3')
   .joinRelation('[numbers.outgoingMessages, numbers.incomingMessages]', {
     aliases: { incomingMessages: 'message' }
   })
-  .orderBy('numbers:message.datecreated').debug();
+  .orderBy('numbers:message.datecreated');
 
 // Run query
 run( query, 'pretty');

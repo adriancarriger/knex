@@ -4,14 +4,15 @@ const { Model } = require('objection');
 
 /**
  * @class MessageModel
- * @extends DbModel
+ * @extends Model
  */
 class MessageModel extends Model {
-	static get tableName() {
-		return 'message';
-	}
+  static get tableName() {
+    return 'message';
+  }
+
 }
 
 module.exports = {
-	MessageModel,
+  MessageModel
 };
