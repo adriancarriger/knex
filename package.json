@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./src/index.js",
-    "twilio": "node ./src/twilio/twilio.js"
+    "start": "node bin/www"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
     "knex": "^0.13.0",
     "objection": "^0.7.12",
     "pg": "^6.1.5",

@@ -1,17 +1,22 @@
+'use strict';
+
+const express = require('express');
+const bodyParser = require('body-parser');
+
 const { connectDb } = require('./db/db-service');
-const { run } = require('./dev/dev');
-const { MessageModel } = require('./message/message-model');
-const knexConfig = require('../knexfile.js');
+const { messageRoute } = require('./message/message-route');
 
-// Connect to db
-const knex = connectDb();
+function createServer() {
+  const app = express();
 
-// Query
-const query = MessageModel
-  .query()
-  .select('message.sid', 'body', 'direction', 'message.datecreated', 'from:people.firstName as from', 'from.number as fromNumber', 'to:people.firstName as to')
-  .leftOuterJoinRelation('[from.people, to.people]')
-  .orderBy('message.datecreated');
+  connectDb();
 
-// Run query
-run( query, 'pretty');
+  return app
+    .use(bodyParser.json())
+    .use(messageRoute())
+    .set('json spaces', 2);
+}
+
+module.exports = {
+  createServer
+}

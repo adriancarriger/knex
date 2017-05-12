@@ -17,8 +17,6 @@ function connectDb() {
     return knex;
   }
 
-  console.log('connecting...');
-
   knex = knexFunction(knexConfig.development);
   Model.knex(knex);
 

@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+
+'use strict';
+
+const { createServer } = require('../src/index');
+const server = createServer();
+
+const hostname = 'localhost';
+const port = 1392;
+
+server.listen(port, hostname, () => console.log(`Serving at http://${hostname}:${port}`));
