@@ -5,7 +5,7 @@ const addPersonToNumber = require('../../src/person/add-person').addPersonToNumb
 const  { addSelf, generatePhone, myNumber } = require('../shared/shared');
 
 exports.seed = function(knex, Promise) {
-  const data = generateData(3, 5);
+  const data = generateData(10, 4);
   // Delete previous values
   return knex('numberToPerson').del()
     .then(() => knex('self').del())

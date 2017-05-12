@@ -1,7 +1,7 @@
 'use strict';
 
 const { Model } = require('objection');
-const { MessageModel } = require('../message/message-model');
+const { PersonModel } = require('../person/person-model');
 
 /**
  * @class NumberModel
@@ -14,20 +14,16 @@ class NumberModel extends Model {
 
   static get relationMappings() {
     return {
-      outgoingMessages: {
-        relation: Model.HasManyRelation,
-        modelClass: MessageModel,
+      people: {
+        relation: Model.ManyToManyRelation,
+        modelClass: PersonModel,
         join: {
           from: 'number.number',
-          to: 'message.from'
-        }
-      },
-      incomingMessages: {
-        relation: Model.HasManyRelation,
-        modelClass: MessageModel,
-        join: {
-          from: 'number.number',
-          to: 'message.to'
+          through: {
+            from: 'numberToPerson.number',
+            to: 'numberToPerson.personId'
+          },
+          to: 'person.id'
         }
       }
     };
