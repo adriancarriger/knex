@@ -15,9 +15,9 @@ connectDb();
 // Query
 const query = MessageModel
   .query()
-  .select('body', 'direction', 'message.datecreated', 'from:people.firstName as from', 'to:people.firstName as to')
-  .joinRelation('[from.people, to.people]')
-  .debug();
+  .select('message.sid', 'body', 'direction', 'message.datecreated', 'from:people.firstName as from', 'from.number as fromNumber', 'to:people.firstName as to')
+  .leftOuterJoinRelation('[from.people, to.people]')
+  .orderBy('message.datecreated');
 
 // Run query
 run( query, 'pretty');

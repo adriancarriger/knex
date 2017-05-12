@@ -14,7 +14,6 @@ exports.seed = function(knex, Promise) {
     .then(getMessages)
     // Add messages
     .then(messages => {
-      console.log('messages are here', messages[0]);
       return Promise.all(messages.map(message => addMessage(message)));
     })
     // Add self
