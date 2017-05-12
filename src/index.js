@@ -1,16 +1,10 @@
-// 3rd part imports
-const knexFunction = require('knex');
-// Local imports
-const knexConfig = require('../knexfile.js');
-const screen = require('./util/screen');
-const knex = knexFunction(knexConfig.development);
-
-const { connectDb } = require('./db/db-service')
+const { connectDb } = require('./db/db-service');
+const { run } = require('./dev/dev');
 const { MessageModel } = require('./message/message-model');
+const knexConfig = require('../knexfile.js');
 
-// App setup
-screen.clear();
-connectDb();
+// Connect to db
+const knex = connectDb();
 
 // Query
 const query = MessageModel
@@ -21,17 +15,3 @@ const query = MessageModel
 
 // Run query
 run( query, 'pretty');
-
-/**
- * @method run
- * @param {string} mode
- */
-function run(knexQuery, mode) {
-  knexQuery
-    .then(data => screen.write(data, mode))
-    .catch(error => console.warn(error))
-    .finally(() => {
-      knex.destroy();
-      console.log('Done.');
-    });
-}

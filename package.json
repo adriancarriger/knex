@@ -14,12 +14,11 @@
     "knex": "^0.13.0",
     "objection": "^0.7.12",
     "pg": "^6.1.5",
-    "prettyjson": "^1.2.1",
-    "sqlite3": "^3.1.8",
     "twilio": "^3.0.0"
   },
   "devDependencies": {
     "faker": "^4.1.0",
-    "lorem-hipsum": "^0.1.7"
+    "lorem-hipsum": "^0.1.7",
+    "prettyjson": "^1.2.1"
   }
 }
