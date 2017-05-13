@@ -16,7 +16,6 @@ function run(knexQuery, mode) {
     .catch(error => console.warn(error))
     .finally(() => {;
       connectDb().destroy();
-      console.log('Done.');
     });
 }
 
