@@ -1,5 +1,7 @@
 # A fun project for Twilio messages
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/adriancarriger/knex.svg)](https://greenkeeper.io/)
+
 ## Connect to Postgres
 
 * `docker-compose exec db /bin/bash`
