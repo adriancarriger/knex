@@ -1,5 +1,5 @@
 const knexFunction = require('knex');
-const knexConfig = require('../knexfile.js');
+const knexConfig = require('../config/knexfile.js');
 const knex = knexFunction(knexConfig.development);
 
 exports.up = function(knex, Promise) {

@@ -4,7 +4,7 @@
 const knexFunction = require('knex');
 const { Model } = require('objection');
 // Local imports
-const knexConfig = require('../../knexfile.js');
+const knexConfig = require('../../config/knexfile.js');
 
 let knex;
 
