@@ -1,5 +1,8 @@
 # A fun project for Twilio messages
 
+[![Dependency Status](https://img.shields.io/david/adriancarriger/knex/develop.svg?maxAge=60)](https://david-dm.org/adriancarriger/knex)
+[![devDependency Status](https://img.shields.io/david/dev/adriancarriger/knex/develop.svg?maxAge=60)](https://david-dm.org/adriancarriger/knex?type=dev)
+
 ## Connect to Postgres
 
 * `docker-compose exec db /bin/bash`
