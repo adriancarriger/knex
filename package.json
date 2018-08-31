@@ -14,7 +14,7 @@
     "express": "^4.15.2",
     "knex": "^0.13.0",
     "objection": "^0.7.12",
-    "pg": "^6.1.5",
+    "pg": "^7.4.3",
     "twilio": "^3.0.0"
   },
   "devDependencies": {
