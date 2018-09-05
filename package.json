@@ -15,7 +15,7 @@
     "knex": "^0.15.2",
     "objection": "^1.2.6",
     "pg": "^7.4.3",
-    "twilio": "^3.0.0"
+    "twilio": "^3.19.2"
   },
   "devDependencies": {
     "faker": "^4.1.0",
