@@ -5,8 +5,7 @@
 
 ## Connect to Postgres
 
-* `docker-compose exec db /bin/bash`
-* `psql -U postgres`
+* `docker-compose exec db bash -c "psql -U postgres"`
 * `CREATE DATABASE data;`
 * `\c data`
 
