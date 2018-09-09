@@ -20,3 +20,8 @@
 * `knex seed:run`
 * `knex seed:run --env staging`
 * `knex seed:run --env production`
+
+## License
+
+knex is licensed under the MIT Open Source license.
+For more information, see the [LICENSE](LICENSE) file in this repository.
