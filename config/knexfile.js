@@ -5,11 +5,11 @@ module.exports = {
   development: {
     client: 'pg',
     connection: {
-      host : '127.0.0.1',
+      host: '127.0.0.1',
       port: '6432',
-      user : 'postgres',
-      password : '',
-      database : 'data'
+      user: 'postgres',
+      password: '',
+      database: 'data'
     },
     pool: {
       min: 2,
@@ -19,18 +19,18 @@ module.exports = {
       tableName: 'knex_migrations'
     },
     seeds: {
-        directory: './seeds/dev'
+      directory: './seeds/dev'
     }
   },
 
   staging: {
     client: 'postgresql',
     connection: {
-      host : '127.0.0.1',
+      host: '127.0.0.1',
       port: '6432',
-      user : 'postgres',
-      password : '',
-      database : 'data'
+      user: 'postgres',
+      password: '',
+      database: 'data'
     },
     pool: {
       min: 2,
@@ -40,7 +40,7 @@ module.exports = {
       tableName: 'knex_migrations'
     },
     seeds: {
-        directory: './seeds/staging'
+      directory: './seeds/staging'
     }
   },
 
@@ -48,7 +48,7 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database: 'my_db',
-      user:     'username',
+      user: 'username',
       password: 'password'
     },
     pool: {
