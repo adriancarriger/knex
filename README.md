@@ -5,9 +5,10 @@
 
 ## Connect to Postgres
 
-* `docker-compose exec db bash -c "psql -U postgres"`
-* `CREATE DATABASE data;`
-* `\c data`
+- `docker-compose exec db /bin/bash`
+- `psql -U postgres`
+- `CREATE DATABASE data;`
+- `\c data`
 
 ## Running the code
 
@@ -17,9 +18,9 @@
 
 ## Seed options
 
-* `knex seed:run`
-* `knex seed:run --env staging`
-* `knex seed:run --env production`
+- `knex seed:run`
+- `knex seed:run --env staging`
+- `knex seed:run --env production`
 
 ## License
 
