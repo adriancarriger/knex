@@ -3,8 +3,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const { connectDb } = require('./db/db-service');
-const { messageRoute } = require('./message/message-route');
+const {
+  connectDb
+} = require('./db/db-service');
+const {
+  messageRoute
+} = require('./message/message-route');
 
 function createServer() {
   const app = express();
